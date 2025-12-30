@@ -1,0 +1,6 @@
+{
+  "name": "Copy of FH EnviroDashboard",
+  "description": "芳和實驗中學環境現況監測系統。即時追蹤校園各處的 PM2.5、溫度、二氧化碳等數據，並由 Gemini 提供 AI 環境分析。",
+  "requestFramePermissions": [],
+  "prompt": "Create an environmental dashboard for a school named Fanghe Experimental Junior High. It should have a dark sidebar with a location switcher and environmental metrics. The main content should show PM2.5 prominently and other metrics in a grid. Include a working analog clock."
+}

@@ -1,0 +1,352 @@
+
+:root {
+  --sidebar-bg: #4a4545;
+  --header-bg: #d9cecd;
+  --main-bg: #f2f2f2;
+  --card-bg: #e8e8e8;
+  --text-dark: #333;
+  --text-light: #fff;
+  --accent-red: #ff4444;
+}
+
+* { box-sizing: border-box; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--main-bg);
+  overflow: hidden;
+}
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  height: 70px;
+  background: var(--header-bg);
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  z-index: 10;
+}
+
+.app-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background: var(--sidebar-bg);
+  color: var(--text-light);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-btn {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #777;
+  background: #fff;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--sidebar-bg);
+  border: 1px solid #777;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.dropdown-list li {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #5a5555;
+}
+
+.dropdown-list li:hover {
+  background: #666;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu div {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: 1px solid #777;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.menu div:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #fff;
+}
+
+/* Clock */
+.clock {
+  margin-top: auto;
+  background: #5b5555;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.clock-svg {
+  width: 60px;
+  height: 60px;
+}
+
+.clock-digital {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.date-display {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.time-display {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.top-block { flex: 2; }
+.bottom-block { flex: 1; }
+
+.pm25-card {
+  grid-column: 1 / span 2;
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-label {
+  font-size: 1.2rem;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.card-value.large {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.card-value small {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #666;
+}
+
+.ai-insight {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #555;
+  font-style: italic;
+  max-width: 80%;
+  line-height: 1.4;
+}
+
+.right-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.metric-card {
+  flex: 1;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-card .label { color: #888; font-size: 0.9rem; }
+.metric-card .value { font-weight: 600; font-size: 1.1rem; color: #444; }
+
+.connected-group {
+  grid-column: 1 / span 2;
+  background: var(--card-bg);
+  border-radius: 24px;
+  display: flex;
+  overflow: hidden;
+}
+
+.connected-card {
+  flex: 1;
+  border-right: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.connected-card:last-child { border-right: none; }
+.connected-card .label { color: #888; font-size: 0.85rem; margin-bottom: 4px; }
+.connected-card .value { font-weight: 600; color: #444; }
+
+.small-card-row {
+  display: flex;
+  gap: 24px;
+}
+
+.small-card {
+  flex: 1;
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.small-card .label { color: #888; font-size: 0.8rem; }
+.small-card .value { font-size: 1.5rem; font-weight: 700; color: #444; }
+
+.weather-icon { font-size: 2.5rem; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transform: translateY(20px);
+  transition: transform 0.3s;
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 16px;
+}
+
+.modal-title { margin: 0; font-size: 1.5rem; }
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.placeholder-chart {
+  height: 200px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  margin: 20px 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 20px;
+  border: 1px dashed #ccc;
+}
+
+.bar {
+  width: 40px;
+  background: #4a4545;
+  border-radius: 4px 4px 0 0;
+  transition: height 1s;
+}
+
+.chart-footer {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #999;
+}
